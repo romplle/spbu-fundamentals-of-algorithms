@@ -18,12 +18,18 @@ def lu(A: NDArray, permute: bool) -> tuple[NDArray, NDArray, NDArray]:
 
 
 def solve(L: NDArray, U: NDArray, P: NDArray, b: NDArray) -> NDArray:
+    b = P @ b
+    
+    n = len(L)
+    y = np.zeros(n)
+    for i in range(n):
+        y[i] = (b[i] - np.dot(L[i, :i], y[:i])) / L[i, i]
 
-    ##########################
-    ### PUT YOUR CODE HERE ###
-    ##########################
+    x = np.zeros(n)
+    for i in range(n - 1, -1, -1):
+        x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
 
-    pass
+    return x
 
 
 def get_A_b(a_11: float, b_1: float) -> tuple[NDArray, NDArray]:
