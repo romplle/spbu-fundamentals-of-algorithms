@@ -23,14 +23,19 @@ if __name__ == "__main__":
         ]
     )
 
+    # Проверка
+    # A = L @ L.T
+    # print("Original Matrix A:")
+    # print(A)
+
+    # L_new = cholesky(A)
+    # print("\nCholesky L:")
+    # print(L_new)
+
+    # A_new = L_new @ L_new.T
+    # print("\nNew Matrix A:")
+    # print(A_new)
+
     A = L @ L.T
-    print("Original Matrix A:")
-    print(A)
-
-    L_new = cholesky(A)
-    print("\nCholesky L:")
-    print(L_new)
-
-    A_new = L_new @ L_new.T
-    print("\nNew Matrix A:")
-    print(A_new)
+    L = cholesky(A)
+    print(L)
